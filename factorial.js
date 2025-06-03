@@ -1,4 +1,4 @@
-// Se agrega validación básica: que sea número entero positivo.
+// Se agrega validación básica: que sea número entero positivo
 
 let n = parseInt(prompt("Número:"));
 if (isNaN(n) || n < 0) {
