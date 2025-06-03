@@ -1,24 +1,17 @@
-// Se mide el tiempo de ejecución y se cuenta la cantidad de pasos realizados.
-// Esto permite hacer análisis cuantitativos del proceso.
+// Se aplica optimización usando memoización.
+// Guarda resultados ya calculados para no repetir operaciones.
+
+const memo = {};
 
 function factorial(n) {
-  let f = 1, pasos = 0;
-  for (let i = 1; i <= n; i++) {
-    f *= i;
-    pasos++;
-  }
-  return { f, pasos };
+  if (n <= 1) return 1;
+  if (memo[n]) return memo[n];          // Usa el valor guardado si ya se calculó
+  return memo[n] = n * factorial(n - 1); // Calcula y guarda el resultado
 }
 
 let n = parseInt(prompt("Número:"));
 if (isNaN(n) || n < 0) {
   console.log("Número inválido");
 } else {
-  let inicio = performance.now(); // Marca el tiempo inicial
-  let res = factorial(n);
-  let fin = performance.now();    // Marca el tiempo final
-
-  console.log("Resultado:", res.f);
-  console.log("Pasos:", res.pasos);
-  console.log("Tiempo:", (fin - inicio).toFixed(2), "ms");
+  console.log("Resultado:", factorial(n));
 }
