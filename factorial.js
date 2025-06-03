@@ -1,7 +1,10 @@
-// El programa no tiene validación ni estructura.
-// Simplemente calcula el factorial del número ingresado.
+// Se agrega validación básica: que sea número entero positivo.
 
-let n = prompt("Número:");
-let f = 1;
-for (let i = 1; i <= n; i++) f *= i;
-console.log(f);
+let n = parseInt(prompt("Número:"));
+if (isNaN(n) || n < 0) {
+  console.log("Número inválido");
+} else {
+  let f = 1;
+  for (let i = 1; i <= n; i++) f *= i;
+  console.log(f);
+}
